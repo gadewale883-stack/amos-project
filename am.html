@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>North West Property Services — Commercial Maintenance & Compliance</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --ink:#142136;
+    --ink-2:#1D3050;
+    --steel:#3B6E93;
+    --amber:#E2A73E;
+    --paper:#FAF8F2;
+    --slate:#6B7280;
+    --verified:#3F7D58;
+    --line:#E4DFD3;
+    --radius:14px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--ink);
+    font-weight:600;
+    letter-spacing:-0.01em;
+}
+
+.mono{ font-family:'IBM Plex Mono',monospace; }
+
+.container{
+    width:90%;
+    max-width:1180px;
+    margin:auto;
+}
+
+a{ color:inherit; }
+img{ max-width:100%; display:block; }
+
+/* scroll reveal */
+.reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    transition-delay:var(--reveal-delay, 0s);
+}
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+@media (prefers-reduced-motion:reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+}
+
+/* ===== HEADER ===== */
+header{
+    background:rgba(250,248,242,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:16px 0;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.nav{ display:flex; justify-content:space-between; align-items:center; }
+
+.brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
+
+.brand-mark{
+    width:40px; height:40px;
+    background:var(--ink);
+    border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--amber);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    flex-shrink:0;
+}
+
+.brand-name{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    line-height:1.2;
+}
+
+.brand-name span{
+    display:block;
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:400;
+    font-size:10.5px;
+    color:var(--slate);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-top:2px;
+}
+
+.nav-links{ display:flex; align-items:center; gap:34px; }
+.nav-links ul{ display:flex; gap:30px; list-style:none; }
+.nav-links a{ text-decoration:none; color:var(--ink); font-weight:500; font-size:14.5px; }
+.nav-links a:hover{ color:var(--steel); }
+
+.nav-cta{
+    background:var(--ink);
+    color:#fff !important;
+    padding:10px 18px;
+    border-radius:7px;
+    font-weight:600 !important;
+    font-size:13.5px !important;
+}
+.nav-cta:hover{ background:var(--steel) !important; }
+
+.nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+}
+.nav-toggle span{ width:22px; height:2px; background:var(--ink); display:block; }
+
+/* ===== HERO ===== */
+.hero{
+    position:relative;
+    min-height:88vh;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    padding-bottom:70px;
+}
+
+.hero-video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    z-index:0;
+}
+
+.hero-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,33,54,.72) 0%, rgba(20,33,54,.55) 45%, rgba(20,33,54,.85) 100%);
+    z-index:1;
+}
+
+.hero-content{ position:relative; z-index:2; width:100%; padding-top:40px; }
+
+.hero-text{ max-width:680px; }
+
+.contact-strip{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(255,255,255,.96);
+    padding:9px 18px;
+    border-radius:30px;
+    margin-bottom:26px;
+    font-size:13.5px;
+    font-weight:500;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+
+.contact-strip a{
+    display:flex; align-items:center; gap:7px;
+    text-decoration:none; color:var(--ink); font-weight:600;
+}
+
+.status-dot{
+    width:7px; height:7px;
+    background:var(--verified);
+    border-radius:50%;
+    box-shadow:0 0 0 3px rgba(63,125,88,.18);
+}
+
+.hero-text .eyebrow{ color:var(--amber); }
+
+.hero-text h1{
+    font-size:48px;
+    color:#fff;
+    line-height:1.14;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:rgba(255,255,255,.85);
+    font-size:17px;
+    margin-bottom:30px;
+    max-width:560px;
+}
+
+.hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    padding:14px 26px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:14.5px;
+    transition:.2s;
+    border:1px solid transparent;
+}
+
+.btn-amber{ background:var(--amber); color:var(--ink); }
+.btn-amber:hover{ background:#cf9531; }
+
+.btn-outline{ background:transparent; color:#fff; border-color:rgba(255,255,255,.55); }
+.btn-outline:hover{ background:rgba(255,255,255,.1); }
+
+.btn-ink{ background:var(--ink); color:#fff; }
+.btn-ink:hover{ background:var(--ink-2); }
+
+/* Docket card overlapping hero bottom edge */
+.docket{
+    position:relative;
+    z-index:3;
+    margin-top:56px;
+    background:#fff;
+    border-radius:var(--radius);
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.35);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    overflow:hidden;
+}
+
+.docket-cell{
+    padding:20px 24px;
+    border-right:1px dashed var(--line);
+}
+.docket-cell:last-child{ border-right:none; }
+
+.docket-cell .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--slate);
+    margin-bottom:6px;
+}
+
+.docket-cell .value{ font-weight:600; font-size:15px; }
+
+.status-pill{
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(63,125,88,.1);
+    color:var(--verified);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    padding:4px 10px;
+    border-radius:20px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+}
+.status-pill::before{ content:""; width:6px; height:6px; background:var(--verified); border-radius:50%; }
+
+/* ===== SECTION SHARED ===== */
+section{ padding:100px 0; }
+.eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-size:11.5px;
+    color:var(--steel);
+    margin-bottom:14px;
+    display:inline-flex; align-items:center; gap:8px;
+}
+.eyebrow::before{ content:""; width:7px; height:7px; background:var(--amber); border-radius:50%; display:inline-block; }
+
+.section-head{ max-width:640px; margin-bottom:50px; }
+.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+.section-head h2{ font-size:32px; }
+.section-head p{ color:var(--slate); margin-top:12px; font-size:16px; }
+
+/* ===== SERVICES ===== */
+.service-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+
+.service-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 26px;
+    transition:.25s;
+}
+.service-card:hover{ border-color:var(--steel); transform:translateY(-4px); box-shadow:0 16px 30px -18px rgba(20,33,54,.3); }
+
+.tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    padding:4px 10px;
+    border-radius:6px;
+    margin-bottom:16px;
+}
+.tag.planned{ background:rgba(59,110,147,.1); color:var(--steel); }
+.tag.compliance{ background:rgba(63,125,88,.1); color:var(--verified); }
+.tag.emergency{ background:rgba(226,167,62,.18); color:#a06a12; }
+.tag.turnover{ background:rgba(20,33,54,.07); color:var(--ink); }
+
+.service-card h3{ font-size:18px; margin-bottom:8px; }
+.service-card p{ font-size:14px; color:var(--slate); }
+
+/* ===== GALLERY ===== */
+.gallery{ background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.gallery-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.gallery-item{
+    position:relative;
+    border-radius:12px;
+    overflow:hidden;
+    height:210px;
+}
+.gallery-item img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+.gallery-item:hover img{ transform:scale(1.06); }
+.gallery-item::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 60%, rgba(20,33,54,.55) 100%);
+    opacity:0;
+    transition:opacity .3s ease;
+}
+.gallery-item:hover::after{ opacity:1; }
+
+/* ===== VIDEO SHOWCASE ===== */
+.dark-section{ background:var(--ink); color:#fff; }
+.dark-section .eyebrow{ color:var(--amber); }
+.dark-section .eyebrow::before{ background:var(--amber); }
+.dark-section .section-head p{ color:rgba(255,255,255,.6); }
+
+.video-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+
+.video-card{
+    background:var(--ink-2);
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+}
+.video-card video, .video-card img{ width:100%; height:220px; object-fit:cover; display:block; }
+.video-card .video-meta{
+    padding:16px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.video-card h4{ color:#fff; font-size:15px; font-weight:500; font-family:'Inter',sans-serif; }
+.video-card .mono{ font-size:10.5px; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.05em; }
+
+/* ===== ABOUT ===== */
+.about{ background:var(--paper); }
+.about-grid{ display:grid; grid-template-columns:260px 1fr; gap:56px; align-items:start; }
+
+.id-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 22px;
+    text-align:center;
+}
+.id-photo{
+    width:120px; height:120px;
+    border-radius:50%;
+    overflow:hidden;
+    margin:0 auto 16px;
+    background:var(--ink);
+    border:3px solid var(--paper);
+    box-shadow:0 0 0 1px var(--line);
+}
+.id-photo img{ width:100%; height:100%; object-fit:cover; }
+.id-card h4{ font-size:17px; }
+.id-card .role{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; color:var(--slate);
+    text-transform:uppercase; letter-spacing:.06em;
+    margin-top:4px;
+}
+.id-card hr{ border:none; border-top:1px dashed var(--line); margin:18px 0; }
+.id-card .role-note{ font-size:13px; color:var(--slate); text-align:left; }
+
+.about-text p{ color:var(--slate); margin-bottom:16px; font-size:16px; }
+.about-text p strong{ color:var(--ink); }
+
+.stat-row{ display:flex; gap:60px; margin-top:38px; }
+.stat-row h3{ font-size:34px; color:var(--steel); }
+.stat-row .stat-label{ font-size:13px; color:var(--slate); margin-top:2px; }
+
+/* ===== WORK WITH US ===== */
+.hire{ background:var(--ink-2); color:#fff; }
+.hire .eyebrow{ color:var(--amber); }
+.hire .eyebrow::before{ background:var(--amber); }
+
+.hire-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:50px; align-items:center; }
+.hire-text p{ color:rgba(255,255,255,.78); margin-bottom:16px; font-size:16px; }
+
+.trade-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+.trade-tag{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.18);
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:13.5px;
+}
+
+.hire-card{ background:#fff; color:var(--ink); border-radius:var(--radius); padding:32px; }
+.hire-card h3{ font-size:19px; margin-bottom:10px; }
+.hire-card p{ color:var(--slate); font-size:14px; margin-bottom:22px; }
+.hire-card .btn{ width:100%; justify-content:center; }
+
+/* ===== TESTIMONIALS ===== */
+.testimonial-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.testimonial{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:28px 26px;
+    border-radius:var(--radius);
+    position:relative;
+}
+.testimonial .quote-mark{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:40px;
+    color:var(--amber);
+    line-height:1;
+    margin-bottom:8px;
+    display:block;
+}
+.testimonial p{ color:var(--ink); font-size:15px; margin-bottom:14px; }
+.testimonial h4{ font-size:14px; color:var(--slate); font-family:'Inter',sans-serif; font-weight:600; }
+
+/* ===== CONTACT — certificate card ===== */
+.contact{ background:#fff; }
+.cert{
+    display:grid;
+    grid-template-columns:36px 1fr;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    max-width:780px;
+    margin:0 auto;
+}
+.cert-side{ background:var(--ink); display:flex; align-items:center; justify-content:center; }
+.cert-side span{
+    writing-mode:vertical-rl;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; letter-spacing:.15em;
+    color:var(--amber); text-transform:uppercase;
+    padding:20px 0;
+}
+.cert-body{ padding:34px 38px; }
+.cert-head{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    margin-bottom:22px; padding-bottom:22px;
+    border-bottom:1px dashed var(--line);
+}
+.cert-head h3{ font-size:19px; }
+.cert-head .mono{ font-size:12px; color:var(--slate); margin-top:4px; display:block; }
+.stamp{
+    width:58px; height:58px;
+    border:2px solid var(--verified);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    transform:rotate(-8deg);
+    flex-shrink:0;
+}
+.stamp span{
+    font-family:'IBM Plex Mono',monospace; font-size:9px;
+    color:var(--verified); text-transform:uppercase;
+    letter-spacing:.05em; text-align:center; line-height:1.2;
+}
+.cert-rows{ display:grid; grid-template-columns:1fr 1fr; gap:20px 30px; }
+.cert-row .label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px;
+    text-transform:uppercase; letter-spacing:.06em; color:var(--slate);
+    margin-bottom:4px;
+}
+.cert-row .value{ font-weight:500; font-size:15px; }
+.cert-row .value a{ color:var(--steel); text-decoration:none; }
+.cert-row .value a:hover{ text-decoration:underline; }
+
+/* ===== FOOTER ===== */
+footer{ background:var(--ink); color:rgba(255,255,255,.75); padding:60px 0 28px; }
+.footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; padding-bottom:34px; border-bottom:1px solid rgba(255,255,255,.1); }
+.footer-grid h4{ color:var(--amber); font-size:14.5px; margin-bottom:14px; font-family:'Space Grotesk',sans-serif; }
+.footer-grid ul{ list-style:none; }
+.footer-grid li{ margin-bottom:9px; font-size:14px; }
+.footer-grid a{ text-decoration:none; color:inherit; }
+.footer-grid a:hover{ color:var(--amber); }
+.footer-bottom{ padding-top:22px; display:flex; justify-content:space-between; font-size:12.5px; color:rgba(255,255,255,.45); flex-wrap:wrap; gap:10px; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+    .hero-text h1{ font-size:36px; }
+    .docket{ grid-template-columns:repeat(2,1fr); }
+    .docket-cell:nth-child(2){ border-right:none; }
+    .service-grid{ grid-template-columns:repeat(2,1fr); }
+    .gallery-grid{ grid-template-columns:repeat(3,1fr); }
+    .video-grid{ grid-template-columns:repeat(2,1fr); }
+    .about-grid,.hire-grid{ grid-template-columns:1fr; }
+    .id-card{ max-width:280px; margin:0 auto; }
+    .testimonial-grid{ grid-template-columns:1fr; }
+    .cert-rows{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr; }
+    .job-card{ min-width:220px; max-width:220px; }
+    .job-image-circle{ width:150px; height:150px; }
+}
+
+@media(max-width:640px){
+    .nav-links ul{
+        position:fixed; top:68px; left:0; right:0;
+        background:var(--paper);
+        flex-direction:column;
+        gap:0;
+        border-bottom:1px solid var(--line);
+        display:none;
+    }
+    .nav-links ul.open{ display:flex; }
+    .nav-links ul li{ width:100%; }
+    .nav-links ul a{ display:block; padding:16px 24px; border-bottom:1px solid var(--line); }
+    .nav-cta{ display:none; }
+    .nav-toggle{ display:flex; }
+    .hero-text h1{ font-size:29px; }
+    .docket{ grid-template-columns:1fr 1fr; }
+    .docket-cell{ border-bottom:1px dashed var(--line); }
+    .service-grid, .gallery-grid{ grid-template-columns:1fr 1fr; }
+    .video-grid{ grid-template-columns:1fr; }
+    .cert{ grid-template-columns:1fr; }
+    .cert-side{ display:none; }
+    section{ padding:60px 0; }
+    .jobs-slider-section{ padding:20px 0; }
+    .jobs-slider-section h2{ font-size:26px; }
+    .job-card{ min-width:180px; max-width:180px; }
+    .job-image-circle{ width:120px; height:120px; }
+    .job-card h3{ font-size:13.5px; height:auto; min-height:38px; }
+    .slider-track{ gap:16px; }
+    .slider-btn{ width:34px; height:34px; font-size:15px; }
+    .prev-btn{ left:0; }
+    .next-btn{ right:0; }
+}
+.jobs-slider-section {
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.slider-container {
+  position: relative;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.slider-track {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 10px;
+  /* Hide scrollbar for Chrome/Safari/Opera */
+  -webkit-overflow-scrolling: touch;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Job Cards */
+.job-card {
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  background: #fff;
+  text-align: center;
+}
+
+.job-card h3 {
+  font-size: 16px;
+  color: #555;
+  font-weight: normal;
+  margin-bottom: 15px;
+  height: 45px; /* Ensures text aligns evenly */
+  overflow: hidden;
+}
+
+/* Circular Images */
+.job-image-circle {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 15px auto;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.job-image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Typography styles matching the site */
+.raised-by {
+  font-style: italic;
+  color: #777;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.status.approved {
+  color: #27ae60;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cost {
+  color: #e74c3c; /* Red text for costs */
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* Navigation Slider Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.prev-btn { left: -10px; }
+.next-btn { right: -10px; }
+.slider-btn:hover { background: #f5f5f5; }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container nav">
+        <a href="#home" class="brand">
+            <div class="brand-mark">NW</div>
+            <div class="brand-name">
+                North West Property Services
+                <span>Maintenance &amp; Compliance</span>
+            </div>
+        </a>
+
+        <div class="nav-links">
+            <ul id="navList">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="https://t.me/nwps_sarah_connolly" target="_blank" class="nav-cta">Message Us</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <video class="hero-video" autoplay muted loop playsinline poster="sharh.jpg">
+        <source src="9d70c2b7-3b52-4463-88f6-81e863bcbebf.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+        <div class="hero-text">
+            <div class="contact-strip">
+                <span class="status-dot"></span>
+                Questions? Message Sarah directly —
+                <a href="https://t.me/nwps_sarah_connolly" target="_blank">Contact Us on Telegram</a>
+            </div>
+
+            <h1>Compliance-led maintenance for commercial property portfolios</h1>
+            <p>
+                We manage planned maintenance, compliance, and emergency response
+                for landlords across the North West — with one coordinator handling
+                every enquiry, start to finish.
+            </p>
+
+            <div class="hero-actions">
+                <a href="https://t.me/nwps_sarah_connolly" target="_blank" class="btn btn-amber">Message Us on Telegram</a>
+                <a href="#contact" class="btn btn-outline">Enquire About Coverage</a>
+            </div>
+        </div>
+
+        <div class="docket reveal">
+            <div class="docket-cell">
+                <div class="label">Status</div>
+                <span class="status-pill">Accepting Portfolios</span>
+            </div>
+            <div class="docket-cell">
+                <div class="label">Response Time</div>
+                <div class="value">Within 2 hours</div>
+            </div>
+            <div class="docket-cell">
+                <div class="label">Coverage</div>
+                <div class="value">Manchester · Leeds · Liverpool</div>
+            </div>
+            <div class="docket-cell">
+                <div class="label">Coordinator</div>
+                <div class="value">Sarah Connolly</div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="eyebrow">What We Cover</div>
+            <h2>Nine workstreams, one point of contact</h2>
+            <p>Every job routes through a single coordinator, so nothing falls between contractors.</p>
+        </div>
+
+        <div class="service-grid">
+            <div class="service-card reveal">
+                <span class="tag planned">Planned</span>
+                <h3>Planned Maintenance</h3>
+                <p>Scheduled servicing and upkeep to prevent small issues becoming costly repairs.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="tag compliance">Compliance</span>
+                <h3>Gas Safety &amp; EICR</h3>
+                <p>Certified inspections and renewals tracked against every property's due dates.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="tag emergency">Emergency</span>
+                <h3>Emergency Response</h3>
+                <p>Rapid contractor dispatch for urgent issues, day or night, across the portfolio.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="tag turnover">Turnover</span>
+                <h3>Property Turnover</h3>
+                <p>End-of-tenancy repairs and refreshes handled fast to minimise void periods.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="tag planned">Planned</span>
+                <h3>Tiles &amp; Cladding</h3>
+                <p>Beautiful, durable tile installations for bathrooms, kitchens, and exteriors.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="tag turnover">Turnover</span>
+                <h3>Painting &amp; Decorating</h3>
+                <p>Interior and exterior painting finished to a professional standard.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="tag planned">Planned</span>
+                <h3>Doors &amp; Laminate</h3>
+                <p>Door installation, replacement, and laminate flooring work.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="tag turnover">Turnover</span>
+                <h3>Boarding &amp; Plastering</h3>
+                <p>Professional wall finishing for renovations and turnovers.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="tag planned">Planned</span>
+                <h3>Fencing &amp; Garden Works</h3>
+                <p>Security fencing, garden care, and landscaping upkeep.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="eyebrow">Our Work</div>
+            <h2>See the quality of our craftsmanship</h2>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item reveal"><img src="WhatsApp Image 2025-11-02 at 23.29.14_83ef96da-ac1cc1bb.jpg" alt="Completed maintenance work 1"></div>
+            <div class="gallery-item reveal"><img src="WhatsApp Image 2025-11-02 at 23.29.14_88f0c4f2-b48c0afa.jpg" alt="Completed maintenance work 2"></div>
+            <div class="gallery-item reveal"><img src="WhatsApp Image 2025-11-02 at 23.29.14_d29f4b87-19edf375.jpg" alt="Completed maintenance work 3"></div>
+            <div class="gallery-item reveal"><img src="WhatsApp Image 2025-11-02 at 23.29.14_ea548547-75597781.jpg" alt="Completed maintenance work 4"></div>
+            <div class="gallery-item reveal"><img src="WhatsApp Image 2025-11-02 at 23.29.15_61de7956-d1c6021b.jpg" alt="Completed maintenance work 5"></div>
+            <div class="gallery-item reveal"><img src="WhatsApp Image 2025-11-02 at 23.29.14_fcce5a87-668dbb53.jpg" alt="Completed maintenance work 6"></div>
+            <div class="gallery-item reveal"><img src="IMG-20251023-WA0013-279793a3.jpg" alt="Completed maintenance work 7"></div>
+            <div class="gallery-item reveal"><img src="IMG-20251023-WA0025-cc1ee997.jpg" alt="Completed maintenance work 8"></div>
+            <div class="gallery-item reveal"><img src="IMG-20251023-WA0014-167e61d5.jpg" alt="Completed maintenance work 9"></div>
+            <div class="gallery-item reveal"><img src="IMG-20251023-WA0010-fbb3bb78.jpg" alt="Completed maintenance work 10"></div>
+            <div class="gallery-item reveal"><img src="IMG-20251023-WA0023-e5a6e980.jpg" alt="Completed maintenance work 11"></div>
+            <div class="gallery-item reveal"><img src="IMG-20251023-WA0016-cfea4ad8.jpg" alt="Completed maintenance work 12"></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- VIDEO SHOWCASE -->
+<section class="dark-section">
+    <div class="container">
+
+        <div class="section-head reveal">
+            <div class="eyebrow">In Action</div>
+            <h2>See our work in action</h2>
+            <p>Watch our professional services come to life</p>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card reveal">
+                <video src="video1.mp4" controls></video>
+                <div class="video-meta">
+                    <h4>Tiled wall section</h4>
+                    <span class="mono">Job 01</span>
+                </div>
+            </div>
+            <div class="video-card reveal">
+                <video src="video2.mp4" controls></video>
+                <div class="video-meta">
+                    <h4>Doors installation result</h4>
+                    <span class="mono">Job 02</span>
+                </div>
+            </div>
+            <div class="video-card reveal">
+                <video src="video3.mp4" controls></video>
+                <div class="video-meta">
+                    <h4>Quality service in action</h4>
+                    <span class="mono">Job 03</span>
+                </div>
+            </div>
+            <div class="video-card reveal">
+                <video src="video4.mp4" controls></video>
+                <div class="video-meta">
+                    <h4>Planned maintenance visit</h4>
+                    <span class="mono">Job 04</span>
+                </div>
+            </div>
+            <div class="video-card reveal">
+                <video src="video5.mp4" controls></video>
+                <div class="video-meta">
+                    <h4>Compliance check-in</h4>
+                    <span class="mono">Job 05</span>
+                </div>
+            </div>
+            <div class="video-card reveal">
+                <video src="video6.mp4" controls></video>
+                <div class="video-meta">
+                    <h4>Property turnover refresh</h4>
+                    <span class="mono">Job 06</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="container about-grid">
+
+        <div class="id-card reveal">
+            <div class="id-photo"><img src="headshot1.jpg" alt="Sarah Connolly, Operations Coordinator"></div>
+            <h4>Sarah Connolly</h4>
+            <div class="role">Operations Coordinator</div>
+            <hr>
+            <p class="role-note">Manages contractor compliance, scheduling, and client liaison across the portfolio.</p>
+        </div>
+
+        <div class="about-text reveal">
+            <div class="eyebrow">About Us</div>
+            <h2 style="font-size:30px; margin-bottom:18px;">Built to bridge the gap between landlords and reliable maintenance</h2>
+            <p>
+                Established to bridge the gap between commercial landlords and reliable maintenance
+                coverage, we operate as the in-house operations team for property portfolios across
+                the North West.
+            </p>
+            <p>
+                Our coordinator, <strong>Sarah Connolly</strong>, manages contractor compliance,
+                scheduling, and client liaison. We focus on keeping properties compliant, tenancies
+                uninterrupted, and maintenance costs predictable.
+            </p>
+            <p>
+                Whether you manage a single commercial block or a mixed portfolio, we provide the
+                operational backbone to keep your buildings running.
+            </p>
+
+            <div class="stat-row">
+                <div><h3>5+</h3><div class="stat-label">Years Experience</div></div>
+                <div><h3>100+</h3><div class="stat-label">Happy Clients</div></div>
+                <div><h3>24/7</h3><div class="stat-label">Support</div></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- WORK WITH US -->
+<section class="hire" id="work-with-us">
+    <div class="container">
+
+        <div class="hire-grid">
+
+            <div class="hire-text reveal">
+                <div class="eyebrow">Join The Network</div>
+                <h2 style="color:#fff; font-size:30px; margin-bottom:18px;">Work with us</h2>
+                <p>
+                    We directly hire and pay trusted tradespeople to carry out jobs across our
+                    managed portfolio. If you're a qualified plumber, electrician, or other home
+                    service professional looking for steady, well-paid work, we'd like to hear
+                    from you.
+                </p>
+                <p>
+                    Jobs are coordinated through Sarah, so you always know what's expected, when
+                    it's needed, and when you'll be paid.
+                </p>
+                <div class="trade-tags">
+                    <div class="trade-tag">Plumbers</div>
+                    <div class="trade-tag">Electricians</div>
+                    <div class="trade-tag">Painters &amp; Decorators</div>
+                    <div class="trade-tag">Plasterers</div>
+                    <div class="trade-tag">General Maintenance</div>
+                </div>
+            </div>
+
+            <div class="hire-card reveal">
+                <h3>Become a Contractor</h3>
+                <p>Send your trade, coverage area, and experience to Sarah — she'll get back to you within 2 hours during business hours.</p>
+                <a href="https://t.me/nwps_sarah_connolly" target="_blank" class="btn btn-ink">Apply on Telegram</a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+        <div class="jobs-slider-section reveal">
+  <h2>Recent Posted Jobs</h2>
+  <p>Check out some of our recent job requests and repairs.</p>
+
+  <div class="slider-container">
+    <div class="slider-track" id="sliderTrack">
+      
+      <!-- Job 1 -->
+      <div class="job-card reveal">
+        <h3>Damaged door handle (Request) job no: 2255</h3>
+        <div class="job-image-circle">
+          <img src="damage door handler.jpg" alt="Damaged door handle">
+        </div>
+        <p class="raised-by">Raised by tenant</p>
+        <p class="status approved">Approved by landlord</p>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="job-card reveal">
+        <h3>Damaged door handle (Repaired) job no: 2255</h3>
+        <div class="job-image-circle">
+          <img src="door handler.jpg" alt="Repaired door handle">
+        </div>
+        <p class="raised-by">Days to repair: 5</p>
+        <p class="cost">Cost for repair: £174</p>
+      </div>
+
+      <!-- Job 3 -->
+      <div class="job-card reveal">
+        <h3>Leaking Drain (Request) job no: 1115</h3>
+        <div class="job-image-circle">
+          <img src="leaking drainage.jpg" alt="Leaking drain">
+        </div>
+        <p class="raised-by">Raised by tenant</p>
+        <p class="status approved">Approved by landlord</p>
+      </div>
+
+      <!-- Job 4 -->
+      <div class="job-card reveal">
+        <h3>Leaking Drain (Repaired) job no: 1115</h3>
+        <div class="job-image-circle">
+          <img src="leaking drainage.jpg" alt="Repaired drain">
+        </div>
+        <p class="raised-by">Days to repair: 4</p>
+        <p class="cost">Cost for repair: £120</p>
+      </div>
+
+      <!-- Job 5 -->
+      <div class="job-card reveal">
+        <h3>Boiler service & gas safety job no: 2411</h3>
+        <div class="job-image-circle">
+          <img src="boiler services and safety job.jpg" alt="Boiler service">
+        </div>
+        <p class="raised-by">Raised by landlord</p>
+        <p class="cost">Cost for service: £177</p>
+      </div>
+
+      <!-- Job 6 -->
+      <div class="job-card reveal">
+        <h3>Electrical inspection condition report no: 3515</h3>
+        <div class="job-image-circle">
+          <img src="electrician inspection conditon.jpg" alt="Electrical inspection">
+        </div>
+        <p class="raised-by">Raised by landlord</p>
+        <p class="cost">Cost for service: £210</p>
+      </div>
+
+      <!-- Job 7 -->
+      <div class="job-card reveal">
+        <h3>Damaged Ceiling (Request) job no: 4014</h3>
+        <div class="job-image-circle">
+          <img src="damage ceiling.jpg" alt="Damaged ceiling">
+        </div>
+        <p class="raised-by">Raised by tenant</p>
+        <p class="status approved">Approved by landlord</p>
+      </div>
+
+      <!-- Job 8 -->
+      <div class="job-card reveal">
+        <h3>Damaged Ceiling (Repaired) job no: 4014</h3>
+        <div class="job-image-circle">
+          <img src="damageded ceiling.jpg" alt="Repaired ceiling">
+        </div>
+        <p class="raised-by">Days to repair: 3</p>
+        <p class="cost">Cost for repair: £340</p>
+      </div>
+
+    </div>
+<script>function scrollSlider(direction) {
+  const track = document.getElementById('sliderTrack');
+  const cardWidth = track.querySelector('.job-card').offsetWidth + 30; // Card width + gap size
+  
+  // Scrolls by the width of one card multiplied by direction (1 or -1)
+  track.scrollBy({
+    left: cardWidth * direction,
+    behavior: 'smooth'
+  });
+}</script>
+    <!-- Navigation Arrows -->
+    <button class="slider-btn prev-btn" onclick="scrollSlider(-1)">&#10094;</button>
+    <button class="slider-btn next-btn" onclick="scrollSlider(1)">&#10095;</button>
+  </div>
+</div>
+<!-- TESTIMONIALS -->
+<section>
+    <div class="container">
+
+        <div class="section-head center reveal" style="margin-left:auto; margin-right:auto;">
+            <div class="eyebrow" style="justify-content:center;">Client Feedback</div>
+            <h2>What our clients say</h2>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial reveal">
+                <span class="quote-mark">“</span>
+                <p>Excellent service and workmanship.</p>
+                <h4>— Sarah Johnson</h4>
+            </div>
+            <div class="testimonial reveal">
+                <span class="quote-mark">“</span>
+                <p>Outstanding quality and professionalism.</p>
+                <h4>— Mike Thompson</h4>
+            </div>
+            <div class="testimonial reveal">
+                <span class="quote-mark">“</span>
+                <p>Highly recommended company.</p>
+                <h4>— Emma Davis</h4>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="container">
+
+        <div class="section-head center reveal" style="margin-left:auto; margin-right:auto;">
+            <div class="eyebrow" style="justify-content:center;">Get In Touch</div>
+            <h2>Contact</h2>
+            <p>For portfolio enquiries, contractor coordination, or compliance questions.</p>
+        </div>
+
+        <div class="cert reveal">
+            <div class="cert-side"><span>Operations Contact</span></div>
+            <div class="cert-body">
+                <div class="cert-head">
+                    <div>
+                        <h3>Sarah Connolly</h3>
+                        <span class="mono">Operations Coordinator</span>
+                    </div>
+                    <div class="stamp"><span>Verified<br>Contact</span></div>
+                </div>
+                <div class="cert-rows">
+                    <div class="cert-row">
+                        <div class="label">Email</div>
+                        <div class="value"><a href="mailto:sarah.connolly.nwps@gmail.com">sarah.connolly.nwps@gmail.com</a></div>
+                    </div>
+                    <div class="cert-row">
+                        <div class="label">Telegram Desk</div>
+                        <div class="value"><a href="https://t.me/nwps_sarah_connolly" target="_blank">@nwps_sarah_connolly</a></div>
+                    </div>
+                    <div class="cert-row">
+                        <div class="label">Hours</div>
+                        <div class="value">Monday – Friday, 09:00 – 18:00 GMT</div>
+                    </div>
+                    <div class="cert-row">
+                        <div class="label">Response Time</div>
+                        <div class="value">Typically within 2 hours during business hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h4>North West Property Services</h4>
+                <p style="font-size:14px;">Commercial maintenance and compliance management across Greater Manchester, Leeds, and Liverpool.</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li>Planned Maintenance</li>
+                    <li>Gas Safety &amp; EICR</li>
+                    <li>Emergency Response</li>
+                    <li>Property Turnover</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:sarah.connolly.nwps@gmail.com">sarah.connolly.nwps@gmail.com</a></li>
+                    <li><a href="https://t.me/nwps_sarah_connolly" target="_blank">Telegram: @nwps_sarah_connolly</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 North West Property Services. All rights reserved.</span>
+            <span>Greater Manchester · Leeds · Liverpool</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const navList = document.getElementById('navList');
+if(navToggle){
+    navToggle.addEventListener('click', () => navList.classList.toggle('open'));
+    navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.classList.remove('open')));
+}
+
+// Scroll reveal
+if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+}
+
+// Stagger reveals that share a parent grid/container (services, gallery, videos, job cards, testimonials)
+document.querySelectorAll('.service-grid, .gallery-grid, .video-grid, .testimonial-grid, #sliderTrack').forEach(group => {
+    Array.from(group.children).forEach((child, i) => {
+        if(child.classList.contains('reveal')){
+            child.style.setProperty('--reveal-delay', Math.min(i * 0.08, 0.4) + 's');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
